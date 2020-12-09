@@ -1,20 +1,32 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import './style.css'
 
 const Header = (props) => {
   return (
     <header>
-      <h1>ANDREW'S MUSIC EMPORIUM</h1>
+      {props.location.pathname.includes('/albums') ? (
+        <h1>PLEASE BUY SOMETHING</h1>
+      ) : (
+        <h1>ANDREW'S MUSIC EMPORIUM</h1>
+      )}
       <nav className="nav-list">
         <ul>
-          <li>Home</li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
 
-          <li>About</li>
+          <Link to="/about">
+            <li>About</li>
+          </Link>
 
-          <li>Albums</li>
+          <Link to="/albums">
+            <li>Albums</li>
+          </Link>
         </ul>
       </nav>
     </header>
   )
 }
-export default Header
+export default withRouter(Header)
